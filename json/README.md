@@ -1,6 +1,6 @@
 # *EXPLICAÇÃO SOBRE O JSON*
 
-### AQUI VERA UM REPOSITORIO ONDE GUARDA GIFS E FOTOS PARA SEU BOT, DEIXAR ELE MAIS ENGRAÇADO E DIVERTIDO. FEITO PENSADO EM VOCÊS.
+### AQUI VERÁ UM REPOSITÓRIO ONDE GUARDA GIFS E FOTOS PARA SEU BOT, DEIXAR ELE MAIS ENGRAÇADO E DIVERTIDO. FEITO E PENSADO EM VOCÊS.
 
 ---
 
@@ -14,6 +14,7 @@
 > OBS: O CAMINHO DOS GIFS VEM COM O URL NO SITE DO GITHUB NÃO O CAMINHO
 > VEM ASSIM:
 > MUDA PARA: https://raw.githubusercontent.com/gaspardevs/hospedagem.tipos/CAMINHO_FINAL
+> 
 > ASSIM: https://raw.githubusercontent.com/gaspardevs/hospedagem.tipos/8cbb481e5a9d22ce1c0863aedb78370d8dd96a03/gif/beijar1.gif
 
 --- 
@@ -29,5 +30,5 @@
 
 | criador | channel | suport |
 | -- | -- | -- |
-| gaspar |     | 351924423740 |
+| gaspar | [ link channel ](https://whatsapp.com/channel/0029Vb7vjQoK0IBrrGPBjV0G) | [telefone](+351924423740) |
 
