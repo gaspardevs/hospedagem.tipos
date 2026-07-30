@@ -1,0 +1,33 @@
+# *EXPLICAÇÃO SOBRE O JSON*
+
+### AQUI VERA UM REPOSITORIO ONDE GUARDA GIFS E FOTOS PARA SEU BOT, DEIXAR ELE MAIS ENGRAÇADO E DIVERTIDO. FEITO PENSADO EM VOCÊS.
+
+---
+
+## *ONDE PEGO O CAMINHO E COMO TROCO?*
+
+* 1- VAI NA PASTA DO GIF
+* 2- VAI NOS 3 PONTINHOS
+* 3- CLICA EM CAMINHO PERMANTE
+* 4- COLA NO TEU JSON NA PARTE URL
+
+> OBS: O CAMINHO DOS GIFS VEM COM O URL NO SITE DO GITHUB NÃO O CAMINHO
+> VEM ASSIM:
+> MUDA PARA: https://raw.githubusercontent.com/gaspardevs/hospedagem.tipos/CAMINHO_FINAL
+> ASSIM: https://raw.githubusercontent.com/gaspardevs/hospedagem.tipos/8cbb481e5a9d22ce1c0863aedb78370d8dd96a03/gif/beijar1.gif
+
+--- 
+
+## COMO FAÇO?
+
+* 1- NO TEU BOT CRIE UMA PASTA FINAL JSON
+* 2- VAI SER PARA GUARDAR OS LINKS PARA OS GIFS
+* 3- COPIA O JSON QUE DEIXEI PRONTO PARA VCS NA PASTA JSON/URLS E COLA NA SUA PASTA
+* 4- COPIA OS CAMINHOS DO JEITO QUE ENSINEI ENCIMA E MUDA OS URL
+
+> obs: para funcionar tem que adaptar para o seu bot.
+
+| criador | channel | suport |
+| -- | -- | -- |
+| gaspar |     | 351924423740 |
+
