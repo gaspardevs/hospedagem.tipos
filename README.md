@@ -44,6 +44,12 @@ Media-Hub
 │   ├── edits/
 │   ├── anime/
 │   └── ...
+|
+├── cases/
+│   ├── game2/
+|
+├── json/
+│   ├── json/
 │
 └── README.md
 ```
