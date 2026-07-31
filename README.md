@@ -1,4 +1,4 @@
-# 📦 HOSPEDAGEM.TIPOS
+# 📦 HOSPEDAGEM PARA TODOS OS TIPOS
 
 # 📖 Sobre
 
@@ -50,6 +50,7 @@ Media-Hub
 |
 ├── json/
 │   ├── json/
+|   ├── README.md/
 │
 └── README.md
 ```
@@ -109,6 +110,8 @@ await conn.sendMessage(chatId,{
     gifPlayback:true
 })
 ```
+
+> obs: deixei uma case disponivel na pasta cases, se quiser melhor por em uma case só e os links em um json
 
 ---
 
