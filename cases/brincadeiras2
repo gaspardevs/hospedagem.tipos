@@ -1,0 +1,162 @@
+// adapta para o vosso bot
+ case 'gay':
+        case 'lesbica':
+        case 'burro':
+        case 'burra':
+        case 'otaku':
+        case 'fiel':
+        case 'infiel':
+        case 'corno':
+        case 'corna':
+        case 'gado':
+        case 'gostoso':
+        case 'lindo':
+        case 'feio':
+        case 'rico':
+        case 'pobre':
+        case 'feia':
+        case 'rica':
+        case 'nazista':
+        case 'ladrao':
+        case 'ladra':
+        case 'vesgo':
+        case 'vesga':
+        case 'bebado':
+        case 'bebada':
+        case 'racista':
+        case 'homofobico':
+        case 'machista':
+        case 'forte':
+        case 'fraco':
+        case 'nerd':
+        case 'charmoso':
+        case 'bolsonarista':
+        case 'petista':
+        case 'comunista':
+        case 'lulista':
+        case 'bandido':
+        case 'vagabundo':
+        case 'pilantra':
+        case 'mito':
+        case 'gostosa': {
+    if (!isGroup) {
+        await reply('❌ Esse comando só funciona em grupos.');
+        break;
+    }
+
+    const alvoMencao = m.message?.extendedTextMessage?.contextInfo?.mentionedJid?.[0] || m.mentionedJid?.[0];
+    const alvoQuoted = m.message?.extendedTextMessage?.contextInfo?.participant;
+    const alvo = alvoMencao || alvoQuoted || sender; // se não marcar ninguém, usa quem mandou
+
+    const GAMES = require('./database/games2.json'); // ou o nome do seu arquivo
+
+    // Emojis + textos bonitinhos
+    const emojis = {
+        gay: '🏳️‍🌈',
+        lesbica: '🏳️‍🌈',
+        burro: '🐴',
+        burra: '🐴',
+        otaku: '🤓',
+        fiel: '💍',
+        infiel: '💔',
+        corno: '🐂',
+        corna: '🐂',
+        gado: '🐄',
+        gostoso: '🔥',
+        lindo: '😍',
+        feio: '🤢',
+        rico: '💰',
+        pobre: '💸',
+        feia: '🤢',
+        rica: '💰',
+        nazista: '⚠️',
+        ladrao: '🦹',
+        ladra: '🦹‍♀️',
+        vesgo: '👀',
+        vesga: '👀',
+        bebado: '🍺',
+        bebada: '🍺',
+        racista: '🚫',
+        homofobico: '🚫',
+        machista: '🚫',
+        forte: '💪',
+        fraco: '🦴',
+        nerd: '🤓',
+        charmoso: '😎',
+        bolsonarista: '🇧🇷',
+        petista: '🟥',
+        comunista: '☭',
+        lulista: '🟥',
+        bandido: '🔫',
+        vagabundo: '🛏️',
+        pilantra: '🃏',
+        mito: '🦁',
+        gostosa: '🔥'
+    };
+
+    const textos = {
+        gay: 'gay',
+        lesbica: 'lésbica',
+        burro: 'burro',
+        burra: 'burra',
+        otaku: 'otaku',
+        fiel: 'fiel',
+        infiel: 'infiel',
+        corno: 'corno',
+        corna: 'corna',
+        gado: 'gado',
+        gostoso: 'gostoso',
+        lindo: 'lindo',
+        feio: 'feio',
+        rico: 'rico',
+        pobre: 'pobre',
+        feia: 'feia',
+        rica: 'rica',
+        nazista: 'nazista',
+        ladrao: 'ladrão',
+        ladra: 'ladra',
+        vesgo: 'vesgo',
+        vesga: 'vesga',
+        bebado: 'bêbado',
+        bebada: 'bêbada',
+        racista: 'racista',
+        homofobico: 'homofóbico',
+        machista: 'machista',
+        forte: 'forte',
+        fraco: 'fraco',
+        nerd: 'nerd',
+        charmoso: 'charmoso',
+        bolsonarista: 'bolsonarista',
+        petista: 'petista',
+        comunista: 'comunista',
+        lulista: 'lulista',
+        bandido: 'bandido',
+        vagabundo: 'vagabundo',
+        pilantra: 'pilantra',
+        mito: 'mito',
+        gostosa: 'gostosa'
+    };
+
+    try {
+        const imageUrl = GAMES.games[commandFinal]?.image?.url;
+
+        if (!imageUrl) {
+            await reply('❌ Imagem não configurada pra esse comando.');
+            break;
+        }
+
+        // Porcentagem aleatória (opcional, mas fica bem mais divertido)
+        const porcentagem = Math.floor(Math.random() * 101); // 0 a 100
+
+        await conn.sendMessage(from, {
+            image: { url: imageUrl },
+            caption: `${emojis[commandFinal] || '📌'} @${alvo.split('@')[0]} é ${porcentagem}% ${textos[commandFinal] || commandFinal}!`,
+            mentions: [alvo]
+        }, { quoted: m });
+
+    } catch (err) {
+        console.error(`[ERRO ${commandFinal}]:`, err?.message || err);
+        await reply('❌ Erro ao enviar a imagem. Tenta de novo.');
+    }
+    break;
+}
