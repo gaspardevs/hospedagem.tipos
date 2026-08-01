@@ -1,0 +1,106 @@
+// adapta para o seu bot
+
+case 'rankgay':
+case 'rankburro':
+case 'rankotaku':
+case 'rankfiel':
+case 'rankinfiel':
+case 'rankcorno':
+case 'rankgado':
+case 'rankgostoso':
+case 'rankforte':
+case 'rankfraco':
+case 'ranknerd':
+case 'ranklindo':
+case 'ranklesbica':
+case 'rankcorna':
+case 'rankgada':
+case 'rankgostosa': {
+    if (!isGroup) {
+        await reply('❌ Esse comando só funciona em grupos.');
+        break;
+    }
+
+    const GAMES = require('./database/games2.json');
+
+    // Emojis + nomes bonitos
+    const emojis = {
+        rankgay: '🏳️‍🌈',
+        rankburro: '🐴',
+        rankotaku: '🤓',
+        rankfiel: '💍',
+        rankinfiel: '💔',
+        rankcorno: '🐂',
+        rankgado: '🐄',
+        rankgostoso: '🔥',
+        rankforte: '💪',
+        rankfraco: '🦴',
+        ranknerd: '🤓',
+        ranklindo: '😍',
+        ranklesbica: '🏳️‍🌈',
+        rankcorna: '🐂',
+        rankgada: '🐄',
+        rankgostosa: '🔥'
+    };
+
+    const nomes = {
+        rankgay: 'mais gays',
+        rankburro: 'mais burros',
+        rankotaku: 'mais otakus',
+        rankfiel: 'mais fiéis',
+        rankinfiel: 'mais infiéis',
+        rankcorno: 'mais cornos',
+        rankgado: 'mais gados',
+        rankgostoso: 'mais gostosos',
+        rankforte: 'mais fortes',
+        rankfraco: 'mais fracos',
+        ranknerd: 'mais nerds',
+        ranklindo: 'mais lindos',
+        ranklesbica: 'mais lésbicas',
+        rankcorna: 'mais cornas',
+        rankgada: 'mais gadas',
+        rankgostosa: 'mais gostosas'
+    };
+
+    try {
+        const imageUrl = GAMES.ranks[commandFinal]?.image?.url;
+
+        if (!imageUrl) {
+            await reply('❌ Imagem não configurada pra esse rank.');
+            break;
+        }
+
+        // Pega os participantes do grupo
+        const groupMetadata = await conn.groupMetadata(from);
+        const participants = groupMetadata.participants
+            .filter(p => !p.id.includes('status@broadcast'))
+            .map(p => p.id);
+
+        if (participants.length < 5) {
+            await reply('❌ O grupo precisa ter pelo menos 5 membros pra fazer o rank.');
+            break;
+        }
+
+        // Embaralha e pega 5 aleatórios
+        const shuffled = participants.sort(() => 0.5 - Math.random()).slice(0, 5);
+
+        // Monta o ranking
+        let texto = `${emojis[commandFinal] || '🏆'} *Rank dos ${nomes[commandFinal] || commandFinal}:*\n\n`;
+        
+        shuffled.forEach((jid, i) => {
+            const medalha = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `${i + 1}º`;
+            texto += `${medalha} @${jid.split('@')[0]}\n`;
+        });
+
+        await conn.sendMessage(from, {
+            image: { url: imageUrl },
+            caption: texto,
+            mentions: shuffled
+        }, { quoted: m });
+
+    } catch (err) {
+        console.error(`[ERRO ${commandFinal}]:`, err?.message || err);
+        await reply('❌ Erro ao gerar o rank. Tenta de novo.');
+    }
+    break;
+}
