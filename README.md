@@ -1,88 +1,93 @@
-# 📦 Hospedagem de Mídias para Bots e Projetos
+# 📦 Media Hub — Hospedagem de Mídias
 
 <p align="center">
-  <strong>Uma central organizada para hospedar imagens, GIFs, vídeos, arquivos JSON e outros recursos públicos.</strong>
+  <strong>Central pública de imagens, GIFs, vídeos e arquivos JSON para bots, APIs e aplicações.</strong>
 </p>
 
 <p align="center">
   <a href="https://github.com/gaspardevs/hospedagem.tipos">Repositório</a> •
-  <a href="https://github.com/gaspardevs/hospedagem.tipos/issues">Reportar problema</a> •
-  <a href="https://github.com/gaspardevs/hospedagem.tipos/pulls">Contribuir</a>
+  <a href="https://github.com/gaspardevs/hospedagem.tipos/tree/main/cases">Cases</a> •
+  <a href="https://github.com/gaspardevs/hospedagem.tipos/tree/main/json">Arquivos JSON</a>
 </p>
 
 ---
 
-## 📖 Sobre o projeto
+## 📖 Sobre
 
-O **Hospedagem de Mídias** é um repositório criado por **Gaspar Modz** para armazenar, organizar e disponibilizar arquivos utilizados em bots, APIs, sites e aplicações em geral.
+O **Media Hub** é um repositório criado por **Gaspar Modz** para armazenar e organizar mídias utilizadas em bots, APIs, sites e projetos Node.js.
 
-A proposta é manter imagens, GIFs, vídeos e arquivos JSON centralizados em um único lugar. Assim, você pode atualizar uma mídia sem precisar alterar todo o código do seu projeto.
+Aqui você encontrará arquivos separados por tipo e categoria, prontos para serem acessados através de links públicos do GitHub. Dessa forma, seu projeto pode consumir uma mídia por URL sem precisar manter todos os arquivos dentro do código-fonte do bot.
 
-Os arquivos podem ser acessados por requisições HTTP usando links públicos do GitHub.
+### O que você encontra aqui?
 
-> ⚠️ **Importante:** o GitHub não deve ser tratado como uma CDN para arquivos muito grandes ou aplicações de alta escala. Para vídeos pesados e grande volume de acessos, considere utilizar serviços próprios de armazenamento, como Cloudinary, Amazon S3 ou Cloudflare R2.
+- Imagens para comandos e interações
+- GIFs de reações, memes e animações
+- Vídeos, edits e conteúdos para bots
+- Cases e exemplos de utilização
+- Arquivos JSON com listas de URLs
+- Estrutura simples para adicionar novas mídias
 
 ---
 
 ## ✨ Recursos
 
-- 📸 Hospedagem de imagens
-- 🎞️ Hospedagem de GIFs
-- 🎥 Hospedagem de vídeos
-- 📄 Armazenamento de arquivos JSON
-- 📂 Organização por categorias
-- 🔗 Links públicos via `raw.githubusercontent.com`
-- 🤖 Integração simples com bots
-- 🌐 Compatibilidade com qualquer linguagem que aceite requisições HTTP
-- 🔄 Atualização centralizada das mídias
-- 🧩 Estrutura preparada para novos tipos de arquivo
+| Recurso | Descrição |
+| --- | --- |
+| 📸 Imagens | Arquivos `.jpg`, `.jpeg`, `.png` e outros formatos compatíveis |
+| 🎞️ GIFs | Animações organizadas por categorias |
+| 🎥 Vídeos | Edits, memes, clipes e outros vídeos |
+| 📄 JSON | Listas de URLs prontas para integração |
+| 🤖 Bots | Compatível com WhatsApp, Discord, Telegram e outros projetos |
+| 🔗 Links públicos | Acesso direto por requisições HTTP |
+| 📂 Organização | Pastas separadas por tipo e categoria |
 
 ---
 
-## 📁 Estrutura do repositório
+## 📁 Estrutura do projeto
 
 ```text
 hospedagem.tipos/
-├── img/
+│
+├── img/                    # Imagens
 │   ├── anime/
 │   ├── beijo/
 │   ├── abraço/
 │   ├── memes/
 │   └── reações/
 │
-├── gif/
+├── gif/                    # GIFs e animações
 │   ├── anime/
 │   ├── memes/
 │   └── reações/
 │
-├── video/
+├── video/                  # Vídeos
 │   ├── anime/
 │   ├── edits/
 │   └── memes/
 │
-├── cases/
+├── cases/                  # Cases e exemplos de projetos
 │   └── game2/
 │
-├── json/
+├── json/                   # Listas de URLs em JSON
 │   ├── urls/
 │   └── README.md
 │
 └── README.md
 ```
 
-Cada pasta deve conter arquivos relacionados à mesma categoria. Use nomes simples, consistentes e fáceis de localizar.
+Cada categoria possui sua própria pasta para facilitar a localização, manutenção e utilização dos arquivos.
 
 ---
 
-## 🔗 Como acessar uma mídia
+## 🔗 Como utilizar uma mídia
 
-A forma recomendada é utilizar o endereço RAW do arquivo:
+Para utilizar qualquer arquivo, abra a mídia no GitHub, clique em **Raw** e copie o endereço. Também é possível utilizar diretamente este padrão:
 
 ```text
-https://raw.githubusercontent.com/gaspardevs/hospedagem.tipos/main/img/beijo/001.jpg
+https://raw.githubusercontent.com/gaspardevs/hospedagem.tipos/main/CAMINHO_DO_ARQUIVO
 ```
 
-### Exemplos de links
+### Exemplos
 
 **Imagem:**
 
@@ -102,13 +107,15 @@ https://raw.githubusercontent.com/gaspardevs/hospedagem.tipos/main/gif/anime/001
 https://raw.githubusercontent.com/gaspardevs/hospedagem.tipos/main/video/edits/001.mp4
 ```
 
-> Prefira utilizar a branch `main` quando quiser que o link acompanhe as atualizações do arquivo. Para referenciar exatamente uma versão específica, use o SHA de um commit no lugar de `main`.
+> Substitua `CAMINHO_DO_ARQUIVO` pelo caminho real da mídia dentro do repositório.
 
 ---
 
-## 🤖 Integração com Node.js
+## 🤖 Exemplos com Node.js
 
-### Enviando uma imagem
+Os exemplos abaixo utilizam uma estrutura de envio compatível com bibliotecas que trabalham com `conn.sendMessage`.
+
+### Enviar uma imagem
 
 ```js
 const imageUrl =
@@ -116,11 +123,11 @@ const imageUrl =
 
 await conn.sendMessage(chatId, {
   image: { url: imageUrl },
-  caption: "Exemplo de imagem hospedada no GitHub",
+  caption: "Imagem hospedada no Media Hub",
 });
 ```
 
-### Enviando um vídeo
+### Enviar um vídeo
 
 ```js
 const videoUrl =
@@ -128,11 +135,11 @@ const videoUrl =
 
 await conn.sendMessage(chatId, {
   video: { url: videoUrl },
-  caption: "Exemplo de vídeo hospedado no GitHub",
+  caption: "Vídeo hospedado no Media Hub",
 });
 ```
 
-### Enviando um GIF
+### Enviar um GIF
 
 ```js
 const gifUrl =
@@ -141,19 +148,17 @@ const gifUrl =
 await conn.sendMessage(chatId, {
   video: { url: gifUrl },
   gifPlayback: true,
-  caption: "Exemplo de GIF hospedado no GitHub",
+  caption: "GIF hospedado no Media Hub",
 });
 ```
 
-> Os exemplos utilizam uma API compatível com `conn.sendMessage`. Adapte a implementação de acordo com a biblioteca utilizada no seu bot.
-
 ---
 
-## 📄 Utilizando um arquivo JSON de URLs
+## 📄 Utilizando URLs por meio de JSON
 
-Para evitar colocar vários links diretamente no código do bot, você pode organizar as mídias em um arquivo JSON.
+Quando você possui muitas mídias, pode manter os links em um arquivo JSON e carregá-los no seu bot.
 
-### Exemplo de `json/urls/imagens.json`
+### Exemplo de arquivo JSON
 
 ```json
 {
@@ -167,33 +172,33 @@ Para evitar colocar vários links diretamente no código do bot, você pode orga
 }
 ```
 
-### Carregando o JSON no Node.js
+### Carregar o JSON no Node.js
 
 ```js
-const response = await fetch(
-  "https://raw.githubusercontent.com/gaspardevs/hospedagem.tipos/main/json/urls/imagens.json"
-);
+const jsonUrl =
+  "https://raw.githubusercontent.com/gaspardevs/hospedagem.tipos/main/json/urls/imagens.json";
+
+const response = await fetch(jsonUrl);
 
 if (!response.ok) {
-  throw new Error(`Não foi possível carregar o JSON: ${response.status}`);
+  throw new Error(`Erro ao carregar o JSON: ${response.status}`);
 }
 
 const media = await response.json();
-const randomImage = media.beijo[Math.floor(Math.random() * media.beijo.length)];
+const images = media.beijo;
+const randomImage = images[Math.floor(Math.random() * images.length)];
 
 await conn.sendMessage(chatId, {
   image: { url: randomImage },
-  caption: "Imagem selecionada aleatoriamente",
+  caption: "Mídia selecionada aleatoriamente",
 });
 ```
 
-> O Node.js precisa estar em uma versão compatível com `fetch`. Em versões antigas, instale e utilize uma biblioteca como `node-fetch`.
-
 ---
 
-## 🗂️ Padrão de organização
+## 🗂️ Organização das mídias
 
-Para manter o projeto limpo e profissional, siga estas convenções:
+Utilize nomes simples e numeração padronizada:
 
 ```text
 img/beijo/001.jpg
@@ -209,52 +214,19 @@ video/edits/002.mp4
 
 ### Boas práticas
 
-- Use nomes de pastas em minúsculas.
+- Use nomes em minúsculas.
 - Evite espaços e caracteres especiais nos nomes dos arquivos.
 - Numere arquivos com três dígitos: `001`, `002`, `003`.
-- Mantenha uma única categoria por pasta.
-- Utilize extensões corretas: `.jpg`, `.png`, `.gif`, `.mp4` e `.json`.
-- Comprima imagens e vídeos antes de enviá-los.
-- Remova arquivos duplicados ou que não estejam sendo utilizados.
-- Atualize os arquivos JSON quando adicionar ou remover mídias.
+- Separe as mídias por tipo e categoria.
+- Comprima arquivos antes de enviá-los.
+- Atualize os arquivos JSON quando adicionar novas mídias.
+- Teste o link RAW antes de utilizá-lo no seu projeto.
 
 ---
 
-## 📚 Categorias sugeridas
+## 🚀 Onde utilizar
 
-### Imagens
-
-- Abraços
-- Beijos
-- Reações
-- Memes
-- Anime
-- Wallpapers
-- Felicidade
-- Tristeza
-- Choro
-
-### GIFs
-
-- Anime
-- Memes
-- Reações
-- Comédia
-- Ações
-
-### Vídeos
-
-- Edits
-- Anime
-- Shorts
-- Memes
-- Clipes
-
----
-
-## 🚀 Casos de uso
-
-Este repositório pode ser utilizado em:
+Este Media Hub pode ser integrado a:
 
 - Bots de WhatsApp
 - Bots de Discord
@@ -263,47 +235,46 @@ Este repositório pode ser utilizado em:
 - Aplicações Node.js
 - Sites e páginas web
 - Sistemas de automação
-- Projetos pessoais
-- Protótipos e experimentos
+- Projetos pessoais e experimentais
 
 ---
 
-## 🛠️ Adicionando uma nova mídia
+## ➕ Como adicionar uma nova mídia
 
-1. Escolha a pasta correta (`img`, `gif` ou `video`).
-2. Entre na categoria correspondente ou crie uma nova.
-3. Adicione o arquivo seguindo o padrão de nomenclatura.
-4. Atualize o arquivo JSON relacionado, quando necessário.
-5. Faça o commit das alterações.
-6. Teste o link RAW antes de utilizá-lo no seu projeto.
+1. Escolha a pasta correta: `img`, `gif` ou `video`.
+2. Escolha uma categoria existente ou crie uma nova.
+3. Adicione o arquivo seguindo o padrão de nomes.
+4. Atualize o JSON correspondente, se necessário.
+5. Faça o commit da alteração.
+6. Teste o link público da mídia.
 
-Exemplo de mensagem de commit:
+Exemplo de commit:
 
 ```text
-feat: adiciona novos gifs de reações
+feat: adiciona novos gifs de reação
 ```
+
+---
+
+## ⚠️ Observações importantes
+
+- Evite arquivos excessivamente grandes.
+- O GitHub não é recomendado como CDN para aplicações de alta escala.
+- Para vídeos pesados ou muitos acessos, considere Cloudinary, Amazon S3 ou Cloudflare R2.
+- Não envie mídias que você não tem autorização para compartilhar.
+- Respeite direitos autorais, licenças e regras das plataformas.
 
 ---
 
 ## 🤝 Contribuições
 
-Contribuições são bem-vindas! Para colaborar:
+Contribuições são bem-vindas! Você pode colaborar adicionando mídias autorizadas, organizando categorias ou corrigindo links.
 
-1. Faça um fork deste repositório.
+1. Faça um fork do projeto.
 2. Crie uma branch para sua alteração.
-3. Adicione ou organize as mídias.
-4. Verifique se os links estão funcionando.
+3. Faça suas modificações.
+4. Verifique se os arquivos estão organizados.
 5. Abra um Pull Request com uma descrição clara.
-
-Ao contribuir, adicione apenas arquivos que você tem autorização para compartilhar e respeite os direitos autorais das mídias.
-
----
-
-## 📜 Licença e direitos autorais
-
-Este repositório utiliza a licença MIT para o código e a estrutura do projeto. A licença não concede automaticamente direitos sobre imagens, GIFs, vídeos ou outros arquivos de terceiros.
-
-Antes de utilizar ou redistribuir qualquer mídia, verifique se ela pode ser compartilhada e utilizada no seu projeto.
 
 ---
 
@@ -312,7 +283,8 @@ Antes de utilizar ou redistribuir qualquer mídia, verifique se ela pode ser com
 Desenvolvido e organizado por **Gaspar Modz**.
 
 - GitHub: [@gaspardevs](https://github.com/gaspardevs)
-- Repositório: [hospedagem.tipos](https://github.com/gaspardevs/hospedagem.tipos)
+- Repositório: [gaspardevs/hospedagem.tipos](https://github.com/gaspardevs/hospedagem.tipos)
+- Canal: [WhatsApp](https://whatsapp.com/channel/0029Vb7vjQoK0IBrrGPBjV0G)
 
 ---
 
